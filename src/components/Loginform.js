@@ -11,7 +11,7 @@ function Loginform() {
       date: "",
       Mileage: "",
       Condition: "",
-      Features: [],
+      Features: "",
     });
     const handleChange = (event) => {
       const { name, value, type } = event.target;
@@ -25,7 +25,7 @@ function Loginform() {
     
         setFormData((prevData) => ({
           ...prevData,
-          features,
+          Features:features,
         }));
       }else if (type === "range" && name === "priceRange") {
         setPriceRange(parseInt(value)); }else {
@@ -46,46 +46,47 @@ function Loginform() {
     <div className='cover'>
       <form onSubmit={handleSubmit}>
       <h1>Car Sell</h1>
-      <input type='text' placeholder='Car Make' value={carMake} onChange={handleChange}/><br/>
-      <input type='text' placeholder='Car Model' value={carModel} onChange={handleChange}/><br/>
-      <input type='text' placeholder='Day/Month/Year' value={date}  onChange={handleChange}/><br/>
-      <input type="number" placeholder="Mileage" value={Mileage} onChange={handleChange}/><br/>
+      <input type='text' name='carMake' placeholder='Car Make' value={carMake} onChange={handleChange}/><br/>
+      <input type='text' name='carModel' placeholder='Car Model' value={carModel} onChange={handleChange}/><br/>
+      <input type='text' name='date' placeholder='Day/Month/Year' value={date}  onChange={handleChange}/><br/>
+      <input type="number" name='Mileage' placeholder="Mileage" value={Mileage} onChange={handleChange}/><br/>
       <div className='condition'>
       <label>Condition:</label><br/>
-    <input type="radio" id="excellent" name="condition" value="excellent" checked={Condition==="Excellent"} onChange={handleChange}/>
+    <input type="radio" id="excellent" name="Condition" value="excellent" checked={Condition==="excellent"} onChange={handleChange}/>
     <label htmlFor="excellent">Excellent</label><br/>
 
-    <input type="radio" id='good' value="good" checked={Condition==="good"} onChange={handleChange}/>
+    <input type="radio" id='good' value="good" name='Condition' checked={Condition==="good"} onChange={handleChange}/>
     <label htmlFor="good">Good</label><br/>
 
-    <input type="radio"  id='fair'  value="fair" checked={Condition==="fair"} onChange={handleChange}/>
+    <input type="radio"  id='fair'  value="fair" name='Condition' checked={Condition==="fair"} onChange={handleChange}/>
     <label htmlFor="fair">Fair</label><br/>
 
-    <input type="radio" id='poor' value="poor" checked={Condition==="poor"} onChange={handleChange}/>
+    <input type="radio" id='poor' value="poor" name='Condition' checked={Condition==="poor"} onChange={handleChange}/>
     <label htmlFor="poor">Poor</label><br/>
     <label>Features:</label><br/>
-    <input type="checkbox" id='ac' value="ac" checked={Features.includes("Air Conditioning")} onChange={handleChange}/><label htmlFor="ac">Air Conditioning</label><br/>
+    <input type="checkbox" id='ac' value="ac" name='Features' checked={Features.includes("ac")} onChange={handleChange}/><label htmlFor="ac">Air Conditioning</label><br/>
 
-    <input type="checkbox" id="ps" name="features" value="ps" checked={Features.includes("Power Steering")} onChange={handleChange}/><label htmlFor="ps">Power Steering</label><br/>
+    <input type="checkbox" id="ps" name="Features" value="ps" checked={Features.includes("ps")} onChange={handleChange}/>
+    <label htmlFor="ps">Power Steering</label><br/>
 
-    <input type="checkbox" id="pw" name="features" value="pw" checked={Features.includes("Power Window")} onChange={handleChange}/>
+    <input type="checkbox" id="pw" name="Features" value="pw" checked={Features.includes("pw")} onChange={handleChange}/>
     <label htmlFor="pw">Power Windows</label><br/>
 
-    <input type="checkbox" id="abs" name="features" value="abs" checked={Features.includes("ABS")} onChange={handleChange}/>
+    <input type="checkbox" id="abs" name="Features" value="abs" checked={Features.includes("abs")} onChange={handleChange}/>
     <label htmlFor="abs">ABS</label>
     <br/><br/>
     
     <label htmlFor="transmission">Transmission:</label>
-    <select id="transmission" name="transmission">
-      <option value="automatic" onChange={handleChange}>Automatic</option>
-      <option value="manual" onChange={handleChange}>Manual</option>
-    </select><br/>
+    <select id="transmission" name="transmission" onChange={handleChange}>
+  <option value="automatic">Automatic</option>
+  <option value="manual">Manual</option>
+    </select>
     
     <label htmlFor="priceRange">Price Range</label>
     <input type="range" id="priceRange" name="priceRange"  min={10} max={1000} value={priceRange} onChange={handleChange}/>
     <span>{priceRange}</span> 
     </div><br/>
-    <button className='submit'>SUBMIT</button>
+    <button className='submit' type='submit'>SUBMIT</button>
     </form>
     </div>
 
